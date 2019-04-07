@@ -5,6 +5,7 @@ project_path=$(pwd)/
 log_file=$(pwd)/build/unity-mac.log
 
 install "MacEditorTargetInstaller/UnitySetup-WebGL-Support-for-Editor-$VERSION.pkg"
+curl -sL -o Assets/RedOwlWebGLBuilder.cs https://raw.githubusercontent.com/rocktavious/redowl-build-tools/master/scripts/RedOwlWebGLBuilder.cs
 
 error_code=0
 

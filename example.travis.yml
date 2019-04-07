@@ -3,27 +3,18 @@ osx_image: xcode9.2
 language: swift
 
 before_install:
-- mkdir -p scripts
-- travis_retry curl -sL -o scripts/install-unity.sh https://raw.githubusercontent.com/rocktavious/redowl-build-tools/master/scripts/install-unity.sh
-- travis_retry curl -sL -o scripts/clean.sh https://raw.githubusercontent.com/rocktavious/redowl-build-tools/master/scripts/clean.sh
-- travis_retry curl -sL -o scripts/build-windows.sh https://raw.githubusercontent.com/rocktavious/redowl-build-tools/master/scripts/build-windows.sh
-- travis_retry curl -sL -o scripts/build-osx.sh https://raw.githubusercontent.com/rocktavious/redowl-build-tools/master/scripts/build-osx.sh
-- travis_retry curl -sL -o scripts/build-linux.sh https://raw.githubusercontent.com/rocktavious/redowl-build-tools/master/scripts/build-linux.sh
-- travis_retry curl -sL -o scripts/build-webgl.sh https://raw.githubusercontent.com/rocktavious/redowl-build-tools/master/scripts/build-webgl.sh
-- travis_retry curl -sL -o scripts/run-tests.sh https://raw.githubusercontent.com/rocktavious/redowl-build-tools/master/scripts/run-tests.sh
-- travis_retry curl -sL -o scripts/export-package.sh https://raw.githubusercontent.com/rocktavious/redowl-build-tools/master/scripts/export-package.sh
-- chmod a+x ./scripts/*.sh
+- curl -sL https://raw.githubusercontent.com/rocktavious/redowl-build-tools/master/scripts/utils.sh | bash
 
 install:
 - travis_retry ./scripts/install-unity.sh
 
 script:
 - ./scripts/clean.sh
-- ./scripts/build-windows.sh PowerPrefs
-- ./scripts/build-osx.sh PowerPrefs
-- ./scripts/build-linux.sh PowerPrefs
-- ./scripts/build-webgl.sh PowerPrefs
-- ./scripts/run-tests.sh PowerPrefs
+- ./scripts/build-windows.sh <PROJECT_NAME>
+- ./scripts/build-osx.sh <PROJECT_NAME>
+- ./scripts/build-linux.sh <PROJECT_NAME>
+- ./scripts/build-webgl.sh <PROJECT_NAME>
+- ./scripts/run-tests.sh <PROJECT_NAME>
 
 after_success:
-- ./scripts/export-package.sh AndrewLord PowerPrefs
+- ./scripts/export-package.sh <COMPANY_NAME> <PROJECT_NAME>
