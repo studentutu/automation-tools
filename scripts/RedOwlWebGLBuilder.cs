@@ -5,7 +5,7 @@ using UnityEditor;
 
 public static class RedOwlWebGLBuilder {
     public static void build() {
-        BuildPipeline.BuildPlayer(getScenes().ToArray(), "Build/WebGL", BuildTarget.WebGL, BuildOptions.None);
+        BuildPipeline.BuildPlayer(getScenes().ToArray(), "build/webgl", BuildTarget.WebGL, BuildOptions.None);
     }
 
     public static IEnumerable<string> getScenes() {
