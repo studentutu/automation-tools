@@ -29,14 +29,3 @@ install_unity() {
     done
   fi
 }
-
-install_unity_macosx() {
-  install_unity $@
-  export UNITY=/Applications/Unity/Unity.app/Contents/MacOS/Unity
-}
-
-install_unity_linux() {
-  install_unity $@
-  ln -x /opt/Unity/Editor/Unity /usr/bin/unity
-  export UNITY=/usr/bin/unity
-}
