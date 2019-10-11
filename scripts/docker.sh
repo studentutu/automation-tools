@@ -1,3 +1,5 @@
+. ./scripts/unity.sh
+
 docker_build() {
   docker build . --file Dockerfile --build-arg UNITY_PLATFORM=${UNITY_PLATFORM} --build-arg UNITY_VERSION=${UNITY_VERSION} --tag docker.pkg.github.com/red-owl-games/unity-docker/linux:$UNITY_VERSION_FULL
 }
