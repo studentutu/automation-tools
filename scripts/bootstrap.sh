@@ -1,14 +1,14 @@
 
-mkdir -p scripts
-curl -sL -o scripts/docker.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/docker.sh
-curl -sL -o scripts/install.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/install.sh
-curl -sL -o scripts/clean.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/clean.sh
-curl -sL -o scripts/build-windows.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/build-windows.sh
-curl -sL -o scripts/build-osx.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/build-osx.sh
-curl -sL -o scripts/build-linux.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/build-linux.sh
-curl -sL -o scripts/build-webgl.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/build-webgl.sh
-curl -sL -o scripts/run-tests.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/run-tests.sh
-curl -sL -o scripts/export-package.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/export-package.sh
+mkdir -p ./scripts
+curl -sL -o ./scripts/docker.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/docker.sh
+curl -sL -o ./scripts/install.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/install.sh
+curl -sL -o ./scripts/clean.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/clean.sh
+curl -sL -o ./scripts/build-windows.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/build-windows.sh
+curl -sL -o ./scripts/build-osx.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/build-osx.sh
+curl -sL -o ./scripts/build-linux.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/build-linux.sh
+curl -sL -o ./scripts/build-webgl.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/build-webgl.sh
+curl -sL -o ./scripts/run-tests.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/run-tests.sh
+curl -sL -o ./scripts/export-package.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/export-package.sh
 chmod a+x ./scripts/*.sh
 
 prerequisites()
@@ -34,7 +34,3 @@ prerequisites()
 export UNITY_PLATFORM=${1:-"linux"}
 export UNITY_VERSION=${2:-"2018.4"}
 prerequisites $UNITY_PLATFORM
-export UNITY_JSON=$(curl -s "https://public-cdn.cloud.unity3d.com/hub/prod/releases-${UNITY_PLATFORM}.json")
-export UNITY_VERSION_JSON=$(echo $UNITY_JSON | jq -r --arg VERSION "$UNITY_VERSION" '.official[] | select( .version | contains($VERSION))')
-export UNITY_VERSION_FULL=$(echo $UNITY_VERSION_JSON | jq -r '.version')
-
