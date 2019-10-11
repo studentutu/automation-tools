@@ -1,20 +1,16 @@
-. ./scripts/utils.sh
-
 project=$1
 project_path=$(pwd)/
-log_file=$(pwd)/build/unity-mac.log
-
-install "MacEditorTargetInstaller/UnitySetup-WebGL-Support-for-Editor-$VERSION.pkg"
-curl -sL -o Assets/RedOwlWebGLBuilder.cs https://raw.githubusercontent.com/rocktavious/redowl-build-tools/master/scripts/RedOwlWebGLBuilder.cs
 
 error_code=0
 
+curl -sL -o ${project_path}Assets/RedOwlWebGLBuilder.cs https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/RedOwlWebGLBuilder.cs
+
 echo "[RedOwl] Building $project for WebGL."
-/Applications/Unity/Unity.app/Contents/MacOS/Unity \
+$Unity \
   -batchmode \
   -nographics \
   -silent-crashes \
-  -logFile "$log_file" \
+  -logFile \
   -projectPath "$project_path" \
   -executeMethod RedOwlWebGLBuilder.build \
   -quit
@@ -25,9 +21,4 @@ else
   echo "[RedOwl] Building WebGL failed. Exited with $?."
   error_code=1
 fi
-
-echo "[RedOwl] Build logs:"
-cat $log_file
-
-echo "[RedOwl] Finishing with code $error_code"
 exit $error_code

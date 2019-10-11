@@ -2,7 +2,6 @@ company=$1
 project=$2
 package=$3
 project_path=$(pwd)/
-log_file=$(pwd)/build/unity-mac.log
 export_directory=$(pwd)/current-package
 if [ -z "$package" ]; then
   export_path=$export_directory/$project.unitypackage
@@ -16,11 +15,11 @@ error_code=0
 mkdir -p $export_directory
 
 echo "[RedOwl] Creating package."
-/Applications/Unity/Unity.app/Contents/MacOS/Unity \
+$Unity \
   -batchmode \
   -nographics \
   -silent-crashes \
-  -logFile "$log_file" \
+  -logFile \
   -projectPath "$project_path" \
   -exportPackage "$asset_path" "$export_path" \
   -quit
@@ -32,8 +31,4 @@ else
   error_code=1
 fi
 
-echo "[RedOwl] Build logs:""
-cat $log_file
-
-echo "[RedOwl] Finishing with code $error_code"
 exit $error_code
