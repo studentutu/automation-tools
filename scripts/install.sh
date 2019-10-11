@@ -22,10 +22,7 @@ install() {
 
 install_unity() {
   install $UNITY_PLATFORM $(echo $UNITY_VERSION_JSON | jq -r '.downloadUrl')
-  if (( $# > 0 ))
-  then
-    for module in $@; do
-        install $UNITY_PLATFORM $(echo $UNITY_VERSION_JSON | jq -r --arg MODULE "$module" '.modules[] | select( .id == $MODULE) | .downloadUrl')
-    done
-  fi
+  for module in $UNITY_MODULES; do
+      install $UNITY_PLATFORM $(echo $UNITY_VERSION_JSON | jq -r --arg MODULE "$module" '.modules[] | select( .id == $MODULE) | .downloadUrl')
+  done
 }
