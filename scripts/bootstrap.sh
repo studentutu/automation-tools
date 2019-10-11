@@ -1,5 +1,7 @@
 mkdir -p ./scripts
 curl -sL -o ./scripts/install.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/install.sh
+curl -sL -o ./scripts/install-linux.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/install-linux.sh
+curl -sL -o ./scripts/install-macosx.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/install-macosx.sh
 curl -sL -o ./scripts/clean.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/clean.sh
 curl -sL -o ./scripts/build-windows.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/build-windows.sh
 curl -sL -o ./scripts/build-osx.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/build-osx.sh
