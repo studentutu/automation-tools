@@ -1,5 +1,4 @@
 mkdir -p ./scripts
-curl -sL -o ./scripts/docker.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/docker.sh
 curl -sL -o ./scripts/install.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/install.sh
 curl -sL -o ./scripts/clean.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/clean.sh
 curl -sL -o ./scripts/build-windows.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/build-windows.sh
