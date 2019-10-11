@@ -1,23 +1,3 @@
-prerequisites()
-{
-  if (( $# != 1 ))
-  then
-    echo "Usage: prerequisites <platform>"
-    exit 1
-  fi
-  if [ "$1" == "linux" ]
-  then
-    apt-get update -y
-    apt-get install -y curl jq
-    apt-get clean
-    rm -rf /var/lib/apt/lists/*
-  elif [ "$1" == "darwin" ]
-  then
-    brew update
-    brew install curl jq
-  fi
-}
-
 install() {
   if (( $# != 2 ))
   then
@@ -39,25 +19,22 @@ install() {
 }
 
 install_unity() {
-  UNITY_PLATFORM=${1:-"linux"}
-  UNITY_VERSION=${2:-"2018.4"}
-  UNITY_MODULES=${3:-"webgl"}
-  prerequisites $UNITY_PLATFORM
-  UNITY_JSON=$(curl -s "https://public-cdn.cloud.unity3d.com/hub/prod/releases-${UNITY_PLATFORM}.json")
-  UNITY_VERSION_JSON=$(echo $UNITY_JSON | jq -r --arg VERSION "$UNITY_VERSION" '.official[] | select( .version | contains($VERSION))')
   install $UNITY_PLATFORM $(echo $UNITY_VERSION_JSON | jq -r '.downloadUrl')
-  for module in $UNITY_MODULES; do
-    install $UNITY_PLATFORM $(echo $UNITY_VERSION_JSON | jq -r --arg MODULE "$module" '.modules[] | select( .id == $MODULE) | .downloadUrl')
-  done
+  if (( $# > 0 ))
+  then
+    for module in $@; do
+        install $UNITY_PLATFORM $(echo $UNITY_VERSION_JSON | jq -r --arg MODULE "$module" '.modules[] | select( .id == $MODULE) | .downloadUrl')
+    done
+  fi
 }
 
 install_unity_macosx() {
-  install_unity "darwin" $1 $2
+  install_unity $@
   export UNITY=/Applications/Unity/Unity.app/Contents/MacOS/Unity
 }
 
 install_unity_linux() {
-  install_unity "linux" $1 $2
+  install_unity $@
   ln -x /opt/Unity/Editor/Unity /usr/bin/unity
   export UNITY=/usr/bin/unity
 }
