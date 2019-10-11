@@ -1,3 +1,5 @@
+#! /bin/bash
+
 . ./scripts/unity.sh
 
 install() {
