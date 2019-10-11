@@ -1,4 +1,5 @@
 mkdir -p ./scripts
+curl -sL -o ./scripts/unity.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/unity.sh
 curl -sL -o ./scripts/install.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/install.sh
 curl -sL -o ./scripts/install-linux.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/install-linux.sh
 curl -sL -o ./scripts/install-macosx.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/install-macosx.sh
