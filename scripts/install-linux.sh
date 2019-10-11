@@ -1,3 +1,5 @@
+#! /bin/bash
+
 . ./scripts/install.sh
 
 install_unity
