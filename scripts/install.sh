@@ -1,3 +1,5 @@
+. ./scripts/unity.sh
+
 install() {
   if (( $# != 2 ))
   then
