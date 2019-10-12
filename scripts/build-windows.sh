@@ -1,5 +1,4 @@
 project=$1
-project_path=$(pwd)/
 
 error_code=0
 
@@ -9,8 +8,8 @@ $Unity \
   -nographics \
   -silent-crashes \
   -logFile \
-  -projectPath "$project_path" \
-  -buildWindows64Player "$(pwd)/build/windows/$project.app" \
+  -projectPath "$(pwd)" \
+  -buildWindows64Player "$(pwd)/build/windows/$project.exe" \
   -quit
 if [ $? = 0 ] ; then
   echo "[RedOwl] Building Windows completed successfully."
