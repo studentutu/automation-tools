@@ -1,3 +1,4 @@
+project=$1
 error_code=0
 
 echo "[RedOwl] Building $project for Linux."
