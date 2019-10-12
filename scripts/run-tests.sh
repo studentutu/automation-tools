@@ -6,8 +6,8 @@ $Unity \
   -nographics \
   -silent-crashes \
   -logFile \
-  -projectPath "/src" \
-  -editorTestsResultFile "/src/reports/unit-test-results.xml" \
+  -projectPath "$(pwd)" \
+  -editorTestsResultFile "$(pwd)/reports/unit-test-results.xml" \
   -runEditorTests \
   -quit
 
