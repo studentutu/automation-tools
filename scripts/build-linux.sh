@@ -1,6 +1,3 @@
-project=$1
-project_path=$(pwd)/
-
 error_code=0
 
 echo "[RedOwl] Building $project for Linux."
@@ -9,7 +6,7 @@ $UNITY \
   -nographics \
   -silent-crashes \
   -logFile \
-  -projectPath "$project_path" \
+  -projectPath "$(pwd)" \
   -buildLinux64Player "$(pwd)/build/linux/$project.app" \
   -quit
 if [ $? = 0 ] ; then
