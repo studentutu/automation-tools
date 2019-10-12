@@ -1,7 +1,3 @@
-project=$1
-project_path=$(pwd)/src/$project
-test_results=$(pwd)/reports/unit-test-results.xml
-
 error_code=0
 
 echo "[RedOwl] Running unit tests."
@@ -10,8 +6,8 @@ $Unity \
   -nographics \
   -silent-crashes \
   -logFile \
-  -projectPath "$project_path" \
-  -editorTestsResultFile "$test_results" \
+  -projectPath "/src" \
+  -editorTestsResultFile "/src/reports/unit-test-results.xml" \
   -runEditorTests \
   -quit
 
