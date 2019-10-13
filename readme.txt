@@ -10,3 +10,9 @@ http://www.adriansugden.com/kogent-defender/unity-batch-mode-and-butler-with-itc
 
 
 curl -sL https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/bootstrap.sh | bash
+
+docker pull redowlgames/unity-linux:<version>
+# Copy out .alf file
+https://license.unity3d.com/
+# Create .ulf file
+gpg --symmetric --cipher-algo AES256 Unity.ulf
