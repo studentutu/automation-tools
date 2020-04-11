@@ -1,3 +1,5 @@
+export UNITY=/Applications/Unity/Hub/Editor/2019.3.9f1/Unity.app
+
 mkdir -p ./scripts
 curl -sL -o ./scripts/unity.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/unity.sh
 curl -sL -o ./scripts/install.sh https://raw.githubusercontent.com/red-owl-games/automation-tools/master/scripts/install.sh
